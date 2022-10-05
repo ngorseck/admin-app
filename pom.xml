@@ -20,7 +20,7 @@
 
 	<dependencies>
 		<!--  pour les logs et Aspect programming   -->
-		<!-- dependency>
+		<dependency>
 			<groupId>io.zipkin.brave</groupId>
 			<artifactId>brave-context-log4j2</artifactId>
 			<version>5.13.7</version>
@@ -32,7 +32,13 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-aop</artifactId>
-		</dependency -->
+			<exclusions><!--  exclusion de la gestion des logs par defaut de spring boot   -->
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-logging</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
 		<!--  pour les logs et Aspect programming   -->
 		<!--  Pour les mappers  -->
 		<dependency>

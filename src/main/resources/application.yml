@@ -18,3 +18,9 @@ spring:
     properties:
       hibernate:
         format_sql: true
+
+
+info:
+  application:
+    name: admin-app
+    version: '@project.version@'
