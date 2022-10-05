@@ -20,7 +20,7 @@ public class AppRolesController {
         return appRolesService.getAppRoles();
     }
 
-    @GetMapping("{id}")
+    @GetMapping("/{id}")
     public AppRoles getAppRoles(@PathVariable("id") int id) {
         return appRolesService.getAppRole(id);
     }
@@ -31,12 +31,12 @@ public class AppRolesController {
         return appRolesService.createAppRoles(appRoles);
     }
 
-    @PutMapping("{id}")
+    @PutMapping("/{id}")
     public AppRoles updateAppRoles(@PathVariable("id") int id, @Valid @RequestBody AppRoles appRoles) {
         return appRolesService.updateAppRoles(id, appRoles);
     }
 
-    @DeleteMapping("{id}")
+    @DeleteMapping("/{id}")
     public void deleteAppRoles(@PathVariable("id") int id) {
         appRolesService.deleteAppRoles(id);
     }

@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+    <Properties>
+        <Property name="LOG_EXCEPTION_CONVERSION_WORD">%xwEx</Property>
+        <Property name="LOG_PATTERN_LEVEL">%-5level [admin-app,%X{traceId},%X{spanId}]</Property>
+        <Property name="LOG_DATEFORMAT_PATTERN">yyyy-MM-dd HH:mm:ss.SSS</Property>
+        <Property name="LOG_PATTERN">%clr{%d{${sys:LOG_DATEFORMAT_PATTERN}}}{faint} %clr{${sys:LOG_PATTERN_LEVEL}} %clr{%pid}{magenta} %clr{---}{faint} %clr{[%15.15t]}{faint} %clr{%-40.40c{1.}}{cyan} %clr{:}{faint} %m%n${sys:LOG_EXCEPTION_CONVERSION_WORD}</Property>
+    </Properties>
+    <Appenders>
+        <Console name="Console" target="SYSTEM_OUT" follow="true">
+            <PatternLayout pattern="${sys:LOG_PATTERN}"/>
+        </Console>
+        <Console name="Console_JSON" target="SYSTEM_OUT" follow="true">
+           <JsonLayout complete="false" compact="false">
+               <KeyValuePair key="service" value="admin-app"/>
+               <KeyValuePair key="traceId" value="$${ctx:traceId}"/>
+               <KeyValuePair key="spanId" value="$${ctx:spanId}"/>
+           </JsonLayout>
+        </Console>
+        <!-- config fichier de log -->
+        <File name="file" fileName="logs/logs.log">
+            <!--PatternLayout pattern="[%t] %-5p | %-60c | %m (%F:%L)%n" /-->
+            <JsonLayout complete="false" compact="false">
+                <KeyValuePair key="service" value="admin-app"/>
+            </JsonLayout>
+        </File>
+        <!-- config fichier de log -->
+    </Appenders>
+
+    <Loggers>
+        <Root level="info">
+            <!-- AppenderRef ref="Console" / --><!-- pour avoir le format texte des logs -->
+            <AppenderRef ref="Console_JSON" /><!-- pour avoir le format json des logs -->
+            <AppenderRef ref="file" /><!-- config fichier de log -->
+        </Root>
+
+        <Logger name="sn.isi.controller" level="debug" additivity="false">
+            <AppenderRef ref="Console_JSON" />
+        </Logger>
+
+        <Logger name="sn.isi.service" level="debug" additivity="false">
+            <AppenderRef ref="Console_JSON" />
+        </Logger>
+
+    </Loggers>
+
+</Configuration>

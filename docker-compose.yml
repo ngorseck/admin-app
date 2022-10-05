@@ -6,7 +6,7 @@ services:
     container_name: container_mysql-admin-db
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: admin-db
+      MYSQL_DATABASE: adminapp-db
       MYSQL_USER: user
       MYSQL_PASSWORD: user
     ports:

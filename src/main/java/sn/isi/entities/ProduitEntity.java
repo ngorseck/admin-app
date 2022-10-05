@@ -16,6 +16,7 @@ public class ProduitEntity {
     private int id;
     @Column(unique = true, nullable = false, length = 200)
     private String nom;
+    @Column(nullable = false)
     private double qtStock;
     @ManyToOne
     private AppUserEntity appUserEntity;
