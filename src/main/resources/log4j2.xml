@@ -29,8 +29,8 @@
 
     <Loggers>
         <Root level="info">
-            <!-- AppenderRef ref="Console" / --><!-- pour avoir le format texte des logs -->
-            <AppenderRef ref="Console_JSON" /><!-- pour avoir le format json des logs -->
+            <AppenderRef ref="Console" /><!-- pour avoir le format texte des logs -->
+            <!-- AppenderRef ref="Console_JSON" / --><!-- pour avoir le format json des logs -->
             <AppenderRef ref="file" /><!-- config fichier de log -->
         </Root>
 
