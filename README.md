@@ -36,6 +36,5 @@ Ce code va vous permettre de comprendre :
 ---
 Email
 ```
-:email:
-## ngorsecka@gmail.com
+:email: ## ngorsecka@gmail.com
 
