@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>2.7.3</version>
+		<version>3.1.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>sn.isi</groupId>
@@ -14,7 +14,7 @@
 	<name>admin-app</name>
 	<description>Administration d&apos;une application de gestion de produits</description>
 	<properties>
-		<java.version>1.8</java.version>
+		<java.version>17</java.version>
 		<org.mapstruct.version>1.4.2.Final</org.mapstruct.version>
 	</properties>
 
@@ -80,7 +80,7 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<scope>runtime</scope>
+			<version>8.0.30</version>
 		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -93,9 +93,11 @@
 			<scope>test</scope>
 		</dependency>
 		<!-- test unitaire  -->
+		<!--  mockito dependencies -->
 		<dependency>
-			<groupId>junit</groupId>
-			<artifactId>junit</artifactId>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-junit-jupiter</artifactId>
+			<version>5.3.1</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- test unitaire  -->
@@ -124,6 +126,11 @@
 			<version>1.16.3</version>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>jakarta.validation</groupId>
+			<artifactId>jakarta.validation-api</artifactId>
+			<version>2.0.2</version>
+		</dependency>
 		<!--  Test container  -->
 
 	</dependencies>
@@ -133,8 +140,8 @@
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>17</source>
+					<target>17</target>
 					<annotationProcessorPaths>
 						<path>
 							<groupId>org.mapstruct</groupId>

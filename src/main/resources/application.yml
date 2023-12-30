@@ -3,21 +3,28 @@ server:
 
 spring:
   datasource:
-    url: jdbc:mysql://localhost:3306/adminapp-db?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: root
-    password: root
-    driverClassName: com.mysql.cj.jdbc.Driver
+    #url: jdbc:mysql://localhost:3306/adminapp-db?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    #username: root
+    #password: root
+    #driverClassName: com.mysql.cj.jdbc.Driver
+    #Pour aws, nous navons pas besoin de driver
+    url: jdbc:mysql://database-mysql1.cv3dshuqxbdr.us-east-1.rds.amazonaws.com:3306/db_test?createDatabaseIfNotExist=true&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
+    username: admin
+    password: hlKQUq[#R{XW+wh)Ji!xs8Vs:XO[
+#    url: jdbc:mysql://ucspressing-bd.c72c2e2k6bmf.eu-west-1.rds.amazonaws.com:3306/ucspressing_bd
+#    username: root
+#    password: Passer123.
   application:
     name: spring-admin
 
   jpa:
     hibernate:
       ddl-auto: update
-      dialect: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
     properties:
       hibernate:
         format_sql: true
+        dialect: org.hibernate.dialect.MySQLDialect
 
 
 info:
