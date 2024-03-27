@@ -17,7 +17,7 @@ Prérequis pour démarrer le projet  :
 ```bash 
 git clone https://github.com/ngorseck/admin-app.git
 # Executer la commande docker-compose 
-docker-compose up -d
+docker compose up -d
 # Démarrer le projet pour les tests 
 
 ```
