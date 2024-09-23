@@ -5,7 +5,7 @@
 ### REQUIREMENTS
 Prérequis pour démarrer le projet  :
 ```
-    Java 1.8 
+    Java 17 
     Docker 
     maven
 ```

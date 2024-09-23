@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: db-config
+data:
+  host: mysql
+  dbName: adminapp-db
+  initdb.sql: |-
+    CREATE USER 'user'@'%' IDENTIFIED BY 'user123';

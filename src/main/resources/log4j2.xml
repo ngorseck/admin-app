@@ -19,7 +19,9 @@
         </Console>
         <!-- config fichier de log -->
         <File name="file" fileName="logs/logs.log">
-            <!--PatternLayout pattern="[%t] %-5p | %-60c | %m (%F:%L)%n" /-->
+            <!-- format console des logs dans le fichier -->
+            <!-- <PatternLayout pattern="[%t] %-5p | %-60c | %m (%F:%L)%n" />-->
+            <!-- format JSON des logs dans le fichier -->
             <JsonLayout complete="false" compact="false">
                 <KeyValuePair key="service" value="admin-app"/>
             </JsonLayout>
@@ -29,17 +31,17 @@
 
     <Loggers>
         <Root level="info">
-            <AppenderRef ref="Console" /><!-- pour avoir le format texte des logs -->
-            <!-- AppenderRef ref="Console_JSON" / --><!-- pour avoir le format json des logs -->
+            <!-- <AppenderRef ref="Console" />&lt;!&ndash; pour avoir le format texte des logs &ndash;&gt;-->
+            <AppenderRef ref="Console_JSON" /> <!-- pour avoir le format json des logs -->
             <AppenderRef ref="file" /><!-- config fichier de log -->
         </Root>
 
-        <Logger name="sn.isi.controller" level="debug" additivity="false">
-            <AppenderRef ref="Console_JSON" />
+        <Logger name="sn.samanecorporation.controller" level="debug" additivity="false">
+             <AppenderRef ref="Console_JSON" />
         </Logger>
 
-        <Logger name="sn.isi.service" level="debug" additivity="false">
-            <AppenderRef ref="Console_JSON" />
+        <Logger name="sn.samanecorporation.service" level="debug" additivity="false">
+             <AppenderRef ref="Console_JSON" />
         </Logger>
 
     </Loggers>

@@ -1,0 +1,51 @@
+services:
+  admin-app:
+    image: ngorseck/admin-app:0.0.1
+    container_name: container_admin-app
+    environment:
+      DB_HOST: mysql-admin-db
+      DB_NAME: adminapp-db
+      DB_USERNAME: user
+      DB_PASSWORD: user123
+    ports:
+      - "8081:8080"
+
+  mysql-admin-db:
+    image: mysql:8.0
+    container_name: container_mysql-admin-db
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: adminapp-db
+      MYSQL_USER: user
+      MYSQL_PASSWORD: user123
+    ports:
+      - "3306:3306"
+    volumes:
+      - admin_mysql_data:/var/lib/mysql
+    healthcheck:
+      test: mysqladmin ping -h 127.0.0.1 -u $$MYSQL_USER --password=$$MYSQL_PASSWORD
+
+
+  phpmyadmin-admin-db:
+    container_name: container_phpmyadmin-admindb
+    image: phpmyadmin/phpmyadmin:latest
+    ports:
+      - "8085:80"
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      PMA_HOST: mysql-admin-db
+      PMA_USER: user
+      PMA_PASSWORD: user123
+    depends_on:
+      - mysql-admin-db
+    restart: unless-stopped
+
+  redis:
+    image: redis:5.0.3-alpine
+    container_name: admin-app-redis
+    ports:
+      - "6379:6379"
+
+volumes:
+  admin_mysql_data:
+    driver: local
