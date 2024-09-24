@@ -31,8 +31,18 @@ Ce code va vous permettre de comprendre :
 -Comment mettre en place un micro service ?
 ```
 
-### K8S
+### K8S : Vous devez installer minikube et kubectl
 ```
+minikube version
+minikube start --driver=docker
+minikube status
+kubectl version
+kubectl config view
+kubectl get nodes
+```
+
+```
+cd k8s/docs
 kubectl apply -k ./
 kubectl delete -k ./
 ```
@@ -43,12 +53,11 @@ kubectl apply -f mysql-configMap.yaml
 kubectl get po
 kubectl exec -it mysql-6f47fd4d95-r6wd4 /bin/bash
 mysql -u root -p
-CREATE USER 'user2'@'localhost' IDENTIFIED BY 'user123';
+CREATE USER 'user'@'localhost' IDENTIFIED BY 'user123';
 CREATE DATABASE IF NOT EXISTS adminapp;
 GRANT ALL PRIVILEGES ON adminapp.* TO 'user'@'localhost';
 FLUSH PRIVILEGES;
 mysql -u user -p
-
 ```
 
 ```
