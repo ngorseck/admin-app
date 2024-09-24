@@ -1,0 +1,8 @@
+resources:
+  - mysql-pv.yaml
+  - mysql-deployment.yaml
+  - mysql-configMap.yaml
+  - app-deployment.yaml
+
+#kubectl apply -k ./
+#kubectl delete -k ./

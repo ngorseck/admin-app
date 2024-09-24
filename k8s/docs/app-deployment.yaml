@@ -1,0 +1,50 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-app-deployment
+spec:
+  selector:
+    matchLabels:
+      app: admin-app
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: admin-app
+    spec:
+      containers:
+      - name: admin-app-container
+        image: ngorseck/admin-app:0.0.1
+        ports:
+        - containerPort: 8080
+        env:   # Setting Enviornmental Variables
+        - name: DB_HOST   # Setting Database host address from configMap
+          valueFrom:
+            configMapKeyRef:
+              name: db-config
+              key: host
+        - name: DB_NAME  # Setting Database name from configMap
+          valueFrom:
+            configMapKeyRef:
+              name: db-config
+              key: dbName
+        - name: DB_USERNAME  # Setting Database username from Secret
+          value: user
+        - name: DB_PASSWORD # Setting Database password from Secret
+          value: user123
+
+---
+
+apiVersion: v1 # Kubernetes API version
+kind: Service # Kubernetes resource kind we are creating
+metadata: # Metadata of the resource kind we are creating
+  name: admin-app-svc
+spec:
+  selector:
+    app: admin-app
+  ports:
+  - protocol: "TCP"
+    port: 8080 # The port that the service is running on in the cluster
+    targetPort: 8080 # The port exposed by the service
+  type: NodePort # type of the service.
+
