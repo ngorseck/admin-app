@@ -32,6 +32,7 @@ Ce code va vous permettre de comprendre :
 ```
 
 ### K8S : Vous devez installer minikube et kubectl
+--- 
 ```
 minikube version
 minikube start --driver=docker
@@ -66,6 +67,7 @@ kubectl get events --sort-by=.metadata.creationTimestamp
 ```
 
 ### Tests ###
+--- 
 ```
 kubectl get deployment
 ```
@@ -106,9 +108,9 @@ Postman
 
 
 
+### Contact
+--- 
 ```
-#### Contact
----
 Email
 ```
 :email:  ngorsecka@gmail.com
